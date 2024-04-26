@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Tanks A Lot</title>
+	</head>
+	<body>
+		<h1>Input a Tank</h1>
+		<form th:object="${newTank}" th:action="@{/update/{id}(id=${newTank.id})}" method=POST>
+			Model Name: <input name="modelName" size="20" th:field="*{modelName}"> <br />
+			Year Introduced: <input name="yearIntroduced" size="4" 	th:field="*{yearIntroduced}"><br />
+			Amount Made: <input name="amountMade" size="5"	th:field="*{amountMade}"><br />
+			<input name="submit" type="submit" value="submit"/>
+		</form>
+		<a href="viewAllTanks">View all Tanks</a>
+	</body>
+</html>

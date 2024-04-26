@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Tanks A Lot</title>
+	</head>
+	<body>
+		<h1>List of Tanks</h1>
+		<h3>Id || Model Name || Year Introduced || Amount Made</h3>
+		<form>
+			<table>
+				<tr th:each="currentTank : ${tanks}">
+				<td th:text="${currentTank.id}"/>
+				<td th:text="${currentTank.modelName}"/>
+			    <td th:text="${currentTank.yearIntroduced}"/>
+				<td th:text="${currentTank.amountMade}"/>
+				<td><a th:href="@{/edit/{id}(id=${currentTank.id})}">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${currentTank.id})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+		<a href="../inputTank">Add a new tank</a>
+	</body>
+</html>
