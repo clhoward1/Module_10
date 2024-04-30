@@ -2,11 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Tanks A Lot</title>
+		<title>Tanks A Lot</title>	
 	</head>
+	<script type = "text/javascript">	
+		function validate() {
+			if (document.tankForm.modelName.value == "") {
+				alert("Input a Model Name");
+				document.tankForm.modelName.focus;
+				return(false);
+			}
+			
+			if (document.tankForm.yearIntroduced.value == "") {
+				alert("Input a Year");
+				document.tankForm.yearIntroduced.focus;
+				return(false);
+			}
+			
+			if (document.tankForm.amountMade.value == "") {
+				alert("Input an Amount Made");
+				document.tankForm.amountMade.focus;
+				return(false);
+			}
+			
+			if (document.tankForm.amountMade.value == 0) {
+				alert("Input an Amount Made greater than 0");
+				document.tankForm.amountMade.focus;
+				return(false);
+			}
+			
+			return(true);
+		}
+			</script>
 	<body>
 		<h1>Input a Tank</h1>
-		<form th:object="${newTank}" th:action="@{/update/{id}(id=${newTank.id})}" method=POST>
+		<form name="tankForm" onsubmit="return(validate());" th:object="${newTank}" th:action="@{/update/{id}(id=${newTank.id})}" method=POST>
 			Model Name: <input name="modelName" size="20" th:field="*{modelName}"> <br />
 			Year Introduced: <input name="yearIntroduced" size="4" 	th:field="*{yearIntroduced}"><br />
 			Amount Made: <input name="amountMade" size="5"	th:field="*{amountMade}"><br />
